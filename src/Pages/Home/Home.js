@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import HomeHero from "../Hero/HomeHero";
+import Info from "../Info/Info";
+import Services from "../Services/Services";
 
 const Home = () => {
-    return (
-        <div>
-            <h1>This is home</h1>
-        </div>
-    );
+  return (
+    <div className="px-12">
+        <HomeHero></HomeHero>
+        <Info></Info>
+        <Services></Services>
+    </div>
+  );
 };
 
 export default Home;
