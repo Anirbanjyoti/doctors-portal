@@ -17,7 +17,7 @@ const HomeHero = () => {
           <p class="py-6">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad animi necessitatibus enim perspiciatis maiores facere minus perferendis nulla consequatur error!
           </p>
-          <Button></Button>
+          <Button>Get started</Button>
         </div>
       </div>
     </div>

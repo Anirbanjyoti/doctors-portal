@@ -30,7 +30,7 @@ const MakeAppoinment = () => {
             here', making it look like readable English. Many desktop publishing
             packages and web page
           </p>
-          <Button></Button>
+          <Button>Get Started</Button>
         </div>
       </div>
     </section>
