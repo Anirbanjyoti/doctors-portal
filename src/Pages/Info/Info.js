@@ -6,13 +6,14 @@ import phone from "../../assets/icons/phone.svg";
 
 const Info = () => {
   return (
+    <section>
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
       <CardInfo
         bgClass="bg-gradient-to-r from-secondary to-primary"
         cardTitle="Opening Hours"
         img={clock}
       ></CardInfo>
-      <CardInfo
+      <CardInfo 
         bgClass="bg-accent"
         cardTitle="Visit Our Location"
         img={marker}
@@ -23,6 +24,7 @@ const Info = () => {
         img={phone}
       ></CardInfo>
     </div>
+    </section>
   );
 };
 

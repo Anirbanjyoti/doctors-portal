@@ -1,8 +1,10 @@
 import React from 'react';
 import chair from '../../assets/images/chair.png'
+import Button from '../Shared/Button/Button';
 
 const HomeHero = () => {
     return (
+      <section>
         <div class="hero min-h-screen">
       <div class="hero-content flex-col lg:flex-row-reverse">
         <img
@@ -15,10 +17,11 @@ const HomeHero = () => {
           <p class="py-6">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad animi necessitatibus enim perspiciatis maiores facere minus perferendis nulla consequatur error!
           </p>
-          <button className="btn btn-primary bg-gradient-to-r from-secondary to-primary">Get Started</button>
+          <Button></Button>
         </div>
       </div>
     </div>
+    </section>
     );
 };
 
