@@ -14,18 +14,18 @@ const Contact = () => {
         <h1 className="text-primary">Contact Us</h1>
         <p className="text-white text-4xl">Stay Connected with Us</p>
       </div>
-      <div className="w-96 m-auto text-center mt-2">
+      <div className="w-60 md:w-80 lg:w-96 m-auto text-center mt-2">
         <form>
           <input
             type="email"
             placeholder="Email Address"
-            className="input input-bordered input-info w-full my-5"
+            className="input input-bordered input-info w-full my-5 h-14"
           />
           <br></br>
           <input
             type="text"
             placeholder="Subject"
-            class="input input-bordered input-info w-full"
+            class="input input-bordered input-info w-full h-14"
           />
           <br></br>
           <textarea

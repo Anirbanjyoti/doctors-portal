@@ -10,7 +10,7 @@ const Review = ({ review }) => {
             <img src={review.img} alt="" />
           </div>
         </div>
-        <div className="py-5 ml-[-25px]">
+        <div className="lg:py-5 md:ml-5 lg:ml-[-25px]">
           <strong>{review.name}</strong>
           <p>{review.location}</p>
         </div>

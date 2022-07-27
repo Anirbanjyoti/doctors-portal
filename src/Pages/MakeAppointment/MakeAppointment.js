@@ -3,10 +3,10 @@ import doctor from "../../assets/images/doctor-small.png";
 import bgBlue from "../../assets/images/appointment.png";
 import Button from "../Shared/Button/Button";
 
-const MakeAppoinment = () => {
+const MakeAppointment = () => {
   return (
     <section
-      className="my-28"
+      className="sm:my-28"
       style={{
         background: `url(${bgBlue})`,
         backgroundSize: "contain",
@@ -17,7 +17,7 @@ const MakeAppoinment = () => {
           <img src={doctor} alt="images" className="mt-[-100px]"></img>
         </div>
 
-        <div className="flex-1 px-5">
+        <div className="flex-1 px-5 sm:py-14">
           <h3 className="text-xl text-primary">Appointment</h3>
           <h1 className="text-5xl font-bold text-white">
             Make an appointment Today
@@ -37,4 +37,4 @@ const MakeAppoinment = () => {
   );
 };
 
-export default MakeAppoinment;
+export default MakeAppointment;

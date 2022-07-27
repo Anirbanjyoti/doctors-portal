@@ -5,7 +5,7 @@ import Button from "../Shared/Button/Button";
 const ServiceTerms = () => {
   return (
     <section>
-      <div class="hero min-h-screen">
+      <div class="hero min-h-screen my-24">
         <div class="hero-content flex-col lg:flex-row">
           <img
             src={treatment}

@@ -1,10 +1,11 @@
 import React from "react";
 import Contact from "../Contact/Contact";
-import HomeHero from "../Hero/HomeHero";
 import Info from "../Info/Info";
-import MakeAppoinment from "../MakeAppoinment/MakeAppoinment";
+import MakeAppointment from "../MakeAppointment/MakeAppointment";
+import Footer from '../Shared/Footer/Footer'
 import Services from "../Services/Services";
 import ServiceTerms from "../ServiceTerms/ServiceTerms";
+import HomeHero from "../Shared/Hero/HomeHero";
 import Testimonial from "../Testimonial/Testimonial";
 
 const Home = () => {
@@ -14,9 +15,10 @@ const Home = () => {
         <Info></Info>
         <Services></Services>
         <ServiceTerms></ServiceTerms>
-        <MakeAppoinment></MakeAppoinment>
+        <MakeAppointment></MakeAppointment>
         <Testimonial></Testimonial>
         <Contact></Contact>
+        <Footer></Footer>
     </div>
   );
 };
