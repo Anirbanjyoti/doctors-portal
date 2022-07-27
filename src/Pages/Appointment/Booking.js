@@ -2,12 +2,11 @@ import React from "react";
 
 const Booking = ({ booking, setTreatment }) => {
   const { name, slots } = booking;
-  console.log(slots);
 
   return (
-    <div class="card w-96 bg-base-100 shadow-xl m-12">
-      <div class="card-body">
-        <h2 class="card-title justify-center">{name}</h2>
+    <div className="card w-96 bg-base-100 shadow-xl m-12">
+      <div className="card-body">
+        <h2 className="card-title justify-center">{name}</h2>
         <p>
           {slots.length ? (
             <span>{slots[0]}</span>
@@ -20,10 +19,10 @@ const Booking = ({ booking, setTreatment }) => {
           {slots.length > 1 ? " spaces " : " space "}
           available
         </p>
-        <div class="card-actions justify-center">
+        <div className="card-actions justify-center">
           <label
-            for="booking-modal"
-            class="btn btn-secondary text-white uppercase"
+            htmlFor="booking-modal"
+            className="btn btn-secondary text-white uppercase"
             onClick={() => setTreatment(booking)}
             disabled={slots.length === 0}
           >
