@@ -8,7 +8,7 @@ const Appointment = () => {
   return (
     <div>
       <AppointmentBanner date={date} setDate={setDate}></AppointmentBanner>
-      <AvailableAppointment></AvailableAppointment>
+      <AvailableAppointment date={date} setDate={setDate}></AvailableAppointment>
       <Footer></Footer>
     </div>
   );
