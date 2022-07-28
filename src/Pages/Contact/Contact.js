@@ -25,7 +25,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder="Subject"
-            class="input input-bordered input-info w-full h-14"
+            className="input input-bordered input-info w-full h-14"
           />
           <br></br>
           <textarea

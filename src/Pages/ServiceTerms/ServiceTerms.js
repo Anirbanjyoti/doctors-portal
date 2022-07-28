@@ -5,18 +5,18 @@ import Button from "../Shared/Button/Button";
 const ServiceTerms = () => {
   return (
     <section>
-      <div class="hero min-h-screen my-24">
-        <div class="hero-content flex-col lg:flex-row">
+      <div className="hero min-h-screen my-24">
+        <div className="hero-content flex-col lg:flex-row">
           <img
             src={treatment}
-            class="max-w-sm rounded-lg shadow-2xl"
+            className="max-w-sm rounded-lg shadow-2xl"
             alt="images"
           />
           <div className="px-14">
-            <h1 class="text-5xl font-bold">
+            <h1 className="text-5xl font-bold">
               Exceptional Dental Care, on Your Terms
             </h1>
-            <p class="py-6">
+            <p className="py-6">
               It is a long established fact that a reader will be distracted by
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsumis that it has a more-or-less normal

@@ -5,8 +5,8 @@ const Review = ({ review }) => {
     <div className="p-14 shadow m-5">
       <div className="mb-5">{review.review}</div>
       <div className="people grid grid-cols-1 md:grid-cols-2">
-        <div class="avatar">
-          <div class="w-24 rounded-full ring ring-primary ring-offset-base-100">
+        <div className="avatar">
+          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100">
             <img src={review.img} alt="" />
           </div>
         </div>
