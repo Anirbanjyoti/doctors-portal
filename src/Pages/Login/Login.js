@@ -1,6 +1,8 @@
-// import { error } from "daisyui/src/colors";
 import React from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import auth from "../../firebase.init";
+import Loading from "../Shared/Loading";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
@@ -9,7 +11,22 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const onSubmit = (data) => {
+    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
+  };
+  let signInError;
+  if (user) {
+     //
+  }
+  if (loading) {
+    return <Loading></Loading>
+  }
+  if (error) {
+    signInError = <p className="text-error my-2">Error: {error.message}</p>;
+  }
   return (
     <div>
       <div className="grid justify-center mt-24">
@@ -66,8 +83,8 @@ const Login = () => {
                 },
                 pattern: {
                   value: /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$/,
-                  message: 'Put Minimum 01 Character and Maximum 15',
-                 }
+                  message: "Put Minimum 01 Character and Maximum 15",
+                },
               })}
               type="password"
               placeholder=""
@@ -92,8 +109,8 @@ const Login = () => {
             </label>
           </div>
           {/* End Password Field */}
-
-          <input className="btn btn-wide w-80" type='submit' value='login' />
+          {signInError}
+          <input className="btn btn-wide w-80" type="submit" value="login" />
           <p className="text-xs text-center mt-2">
             New to Doctors Portal?
             <span className="text-secondary"> Create new account</span>
