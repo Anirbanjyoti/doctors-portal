@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import React from "react";
 
 const BookingModal = ({ date, treatment, setTreatment }) => {
-  const { _id, name, slots } = treatment;
+  const { name, slots } = treatment;
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -40,8 +40,8 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
               name="slot"
               className="select select-bordered w-full max-w-xs"
             >
-              {slots.map((slot) => (
-                <option key={_id} slot={slot}>
+              {slots.map((slot, index) => (
+                <option key={index} slot={slot}>
                   {slot}
                 </option>
               ))}
