@@ -1,40 +1,76 @@
-import React from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import React from 'react';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
-import SocialLogin from "./SocialLogin";
-import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-  const onSubmit = (data) => {
-    console.log(data);
-    signInWithEmailAndPassword(data.email, data.password);
-    navigate('/appointment');
-  };
-  const navigate = useNavigate();
-  let signInError;
-  if (user) {
-     //
-  }
-  if (loading) {
-    return <Loading></Loading>
-  }
-  if (error) {
-    signInError = <p className="text-error my-2">Error: {error.message}</p>;
-  }
-  return (
-    <div>
+import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from '../Login/SocialLogin';
+
+const SignUp = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
+      const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+      // for name data use update profile hook
+      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+      const onSubmit = async(data) => {
+        console.log(data);
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName:data.name });
+        console.log('update name');
+        navigate('/appointment')
+      };
+      const navigate = useNavigate();
+      let signInError;
+      if (user) {
+         //
+      }
+      if (loading || updating) {
+        return <Loading></Loading>
+      }
+      if (error || updateError) {
+        signInError = <p className="text-error my-2">Error: {error.message}</p>;
+      }
+    return (
+        <div>
       <div className="grid justify-center mt-24">
-        <h1 className="text-center text-4xl font-bold">Login</h1>
+        <h1 className="text-center text-4xl font-bold">SignUp</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
+          {/* Start Name Field */}
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Name is Required",
+                }
+              })}
+              type="text"
+              placeholder=""
+              className="input input-bordered w-80"
+            />
+            <label className="label">
+              {errors.name?.type === "required" && (
+                <span className="label-text-alt text-error">
+                  {errors.name.message}
+                </span>
+              )}
+              
+            </label>
+          </div>
+          {/* End Name Field */}
           {/* Start Email Field */}
           <div className="form-control w-full">
             <label className="label">
@@ -113,17 +149,17 @@ const Login = () => {
           </div>
           {/* End Password Field */}
           {signInError}
-          <input className="btn btn-wide w-80" type="submit" value="login" />
+          <input className="btn btn-wide w-80" type="submit" value="SignUp" />
           <p className="text-xs text-center mt-2">
-            New to Doctors Portal?
-            <Link to='/signup' className="text-secondary"> Create new account</Link>
+            Already have an Account?
+            <Link to='/login' className="text-secondary"> Please Login</Link>
           </p>
         </form>
         <div className="divider">OR</div>
         <SocialLogin></SocialLogin>
       </div>
     </div>
-  );
+    );
 };
 
-export default Login;
+export default SignUp;
