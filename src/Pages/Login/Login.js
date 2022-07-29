@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
@@ -24,9 +24,16 @@ const Login = () => {
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
   let signInError;
-  if (user) {
-    navigate(from, { replace: true });
-  }
+  // If you see 'can not update a component ('BrowserRouter) while rendering a different component' you have to use UseEffect your form and navigation
+  useEffect(()=>{
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate])
+  // If don't show the error then you write this code below simply
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
   if (loading) {
     return <Loading></Loading>
   }

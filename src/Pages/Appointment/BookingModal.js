@@ -1,9 +1,11 @@
 import { format } from "date-fns";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const BookingModal = ({ date, treatment, setTreatment }) => {
   const { name, slots } = treatment;
-
+  const [user] = useAuthState(auth);
   const handleBooking = (e) => {
     e.preventDefault();
     const slot = e.target.slot.value;
@@ -47,12 +49,18 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
               ))}
             </select>
             <input
+              disabled
+              // if show the error 'a component is changing an uncontrolled input to be controlled. this is likely caused by the value changing from undefined to defined value' then use || '' for removing the error.
+              value={user?.displayName || ""}
               type="text"
               placeholder="Your Name"
               name="name"
               className="input input-bordered w-full max-w-xs"
             />
             <input
+              disabled
+              // if show the error 'a component is changing an uncontrolled input to be controlled. this is likely caused by the value changing from undefined to defined value' then use || '' for removing the error.
+              value={user?.email || ""}
               type="email"
               placeholder="Email Address"
               name="email"
