@@ -21,7 +21,7 @@ const SignUp = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
       // for name data use update profile hook
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
+            // Onsubmit
       const onSubmit = async(data) => {
         console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
