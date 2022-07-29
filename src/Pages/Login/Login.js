@@ -8,7 +8,7 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import SocialLogin from "./SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const {
@@ -165,7 +165,6 @@ const Login = () => {
         <div className="divider">OR</div>
         <SocialLogin></SocialLogin>
       </div>
-      <ToastContainer />
     </div>
   );
 };
