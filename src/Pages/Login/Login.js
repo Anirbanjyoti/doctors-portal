@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import SocialLogin from "./SocialLogin";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -17,12 +17,15 @@ const Login = () => {
   const onSubmit = (data) => {
     console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
-    navigate('/appointment');
+    
   };
+  // Redirection page
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   let signInError;
   if (user) {
-     //
+    navigate(from, { replace: true });
   }
   if (loading) {
     return <Loading></Loading>
