@@ -1,12 +1,12 @@
 import React from "react";
-import Contact from "../Contact/Contact";
-import Info from "../Info/Info";
-import MakeAppointment from "../MakeAppointment/MakeAppointment";
-import Footer from '../Shared/Footer/Footer'
-import Services from "../Services/Services";
-import ServiceTerms from "../ServiceTerms/ServiceTerms";
-import HomeHero from "../Shared/Hero/HomeHero";
-import Testimonial from "../Testimonial/Testimonial";
+import Contact from "./Contact";
+import Info from "./Info";
+import MakeAppointment from "./MakeAppointment";
+import Footer from '../Shared/Footer'
+import Services from "./Services";
+import ServiceTerms from "./ServiceTerms";
+import Testimonial from "./Testimonial";
+import HomeHero from "./HomeHero";
 
 const Home = () => {
   return (

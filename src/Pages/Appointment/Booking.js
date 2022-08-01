@@ -8,9 +8,10 @@ const Booking = ({ booking, setTreatment }) => {
       <div className="card-body">
         <h2 className="card-title justify-center">{name}</h2>
         <p>
-          {slots.length ? (
+          {slots.length 
+            ? (
             <span>{slots[0]}</span>
-          ) : (
+            ) : (
             <span className="text-red-500">Not Available Try Another Date</span>
           )}
         </p>

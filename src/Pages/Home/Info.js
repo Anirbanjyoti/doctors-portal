@@ -1,5 +1,5 @@
 import React from "react";
-import CardInfo from "../CardInfo/CardInfo";
+import CardInfo from "./CardInfo";
 import clock from "../../assets/icons/clock.svg";
 import marker from "../../assets/icons/marker.svg";
 import phone from "../../assets/icons/phone.svg";

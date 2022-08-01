@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 import { Link, useNavigate } from "react-router-dom";
-import SocialLogin from '../Login/SocialLogin';
+import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
     const {

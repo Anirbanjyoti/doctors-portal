@@ -8,13 +8,13 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
   const { _id, name, slots } = treatment;
   const [user] = useAuthState(auth);
 
-  const formattedDate = format(date, "pp");
+  const formattedDate = format(date, 'PP');
   const handleBooking = (e) => {
     e.preventDefault();
     const slot = e.target.slot.value;
     console.log(slot);
     // Booking info adding to backend mongodb
-    const appointment = {
+    const booking = {
       treatmentId: _id,
       treatment: name,
       date: formattedDate,
@@ -23,12 +23,12 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
       patientName: user.displayName,
       phone: e.target.phone.value,
     };
-    fetch("http://localhost:5000/appointment", {
+    fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(appointment),
+      body: JSON.stringify(booking),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -37,7 +37,7 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
           toast(`Appointment is set to ${formattedDate} at ${slot}`)
         }
         else{
-          toast.error(`You already booking an Appointment on ${data.appointment?.date} at ${data.appointment?.slot}`)     
+          toast.error(`Already have an Appointment on ${data.booking?.date} at ${data.booking?.slot}`)     
         }
         // to close the modal
         setTreatment(null);

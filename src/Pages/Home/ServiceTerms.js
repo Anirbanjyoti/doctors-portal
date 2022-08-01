@@ -1,6 +1,6 @@
 import React from "react";
 import treatment from "../../assets/images/treatment.png";
-import Button from "../Shared/Button/Button";
+import Button from "../Shared/Button";
 
 const ServiceTerms = () => {
   return (

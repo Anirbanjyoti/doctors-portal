@@ -1,6 +1,6 @@
 import React from 'react';
-import chair from '../../../assets/images/chair.png'
-import Button from '../Button/Button';
+import chair from '../../assets/images/chair.png'
+import Button from '../Shared/Button';
 
 const HomeHero = () => {
     return (
