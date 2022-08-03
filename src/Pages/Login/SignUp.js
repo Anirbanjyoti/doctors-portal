@@ -1,47 +1,50 @@
-import React from 'react';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
+import React from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 import { Link, useNavigate } from "react-router-dom";
-import SocialLogin from './SocialLogin';
+import SocialLogin from "./SocialLogin";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
-      const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useCreateUserWithEmailAndPassword(auth);
-      // for name data use update profile hook
-      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-            // Onsubmit
-      const onSubmit = async(data) => {
-        console.log(data);
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName:data.name });
-        console.log('update name');
-        navigate('/appointment')
-      };
-      const navigate = useNavigate();
-      let signInError;
-      if (user) {
-         //
-      }
-      if (loading || updating) {
-        return <Loading></Loading>
-      }
-      if (error || updateError) {
-        signInError = <p className="text-error my-2">Error: {error.message}</p>;
-      }
-    return (
-        <div>
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  // for name data use update profile hook
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  // calling custom hooks for Saving Registered user information in the database
+  const [token] = useToken(user);
+
+  // Onsubmit
+  const onSubmit = async (data) => {
+    console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    // console.log("update name");
+  };
+  const navigate = useNavigate();
+  let signInError;
+  if (token) {
+    navigate("/appointment");
+  }
+  if (loading || updating) {
+    return <Loading></Loading>;
+  }
+  if (error || updateError) {
+    signInError = <p className="text-error my-2">Error: {error.message}</p>;
+  }
+  return (
+    <div>
       <div className="grid justify-center mt-24">
         <h1 className="text-center text-4xl font-bold">SignUp</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -55,7 +58,7 @@ const SignUp = () => {
                 required: {
                   value: true,
                   message: "Name is Required",
-                }
+                },
               })}
               type="text"
               placeholder=""
@@ -67,7 +70,6 @@ const SignUp = () => {
                   {errors.name.message}
                 </span>
               )}
-              
             </label>
           </div>
           {/* End Name Field */}
@@ -152,14 +154,17 @@ const SignUp = () => {
           <input className="btn btn-wide w-80" type="submit" value="SignUp" />
           <p className="text-xs text-center mt-2">
             Already have an Account?
-            <Link to='/login' className="text-secondary"> Please Login</Link>
+            <Link to="/login" className="text-secondary">
+              {" "}
+              Please Login
+            </Link>
           </p>
         </form>
         <div className="divider">OR</div>
         <SocialLogin></SocialLogin>
       </div>
     </div>
-    );
+  );
 };
 
 export default SignUp;
