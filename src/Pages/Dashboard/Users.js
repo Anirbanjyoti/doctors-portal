@@ -5,24 +5,29 @@ import UserRow from "./UserRow";
 
 const Users = () => {
   const { data: users, isLoading } = useQuery(["user"], () =>
-    fetch("http://localhost:5000/user").then((res) => res.json())
+    fetch("http://localhost:5000/user", {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => res.json())
   );
 
   if (isLoading) {
     return <Loading></Loading>;
-  } else {
-    console.log(`Value Undefined`);
   }
   return (
     <div>
       <h1>Total users: {users.length}</h1>
 
-      <div class="overflow-x-auto">
-        <table class="table table-zebra w-full ">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full ">
           <thead>
             <tr>
               <th>ID</th>
               <th>Email</th>
+              <th>Make Admin</th>
+              <th>Remove User</th>
             </tr>
           </thead>
           <tbody>
