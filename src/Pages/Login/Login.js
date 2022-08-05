@@ -9,6 +9,7 @@ import Loading from "../Shared/Loading";
 import SocialLogin from "./SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const {
@@ -19,6 +20,7 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user)
   // Send Email for reset pAssword
   const [email, setEmail] = useState("");
   const [sendPasswordResetEmail, resetSending, resetError] =
@@ -44,10 +46,10 @@ const Login = () => {
   let signInError;
   // If you see 'can not update a component ('BrowserRouter) while rendering a different component' you have to use UseEffect your form and navigation
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [token, from, navigate])
   // If don't show the error then you write this code below simply
   // if (user) {
   //   navigate(from, { replace: true });

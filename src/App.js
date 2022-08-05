@@ -12,6 +12,8 @@ import SignUp from "./Pages/Login/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReviews from "./Pages/Dashboard/MyReviews";
+import History from "./Pages/Dashboard/History";
+import Users from "./Pages/Dashboard/Users";
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
         >
           <Route index element={<MyAppointment />} />
           <Route path="reviews" element={<MyReviews />} />
+          <Route path="history" element={<History />} />
+          <Route path="users" element={<Users />} />
         </Route>
 
         <Route path="login" element={<Login />} />

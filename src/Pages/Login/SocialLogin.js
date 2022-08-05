@@ -6,8 +6,8 @@ import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading";
 
 const SocialLogin = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const [token] =useToken(user);
+    const [signInWithGoogle, gUser, loading, error] = useSignInWithGoogle(auth);
+    const [token] = useToken(gUser);
     const navigate = useNavigate();
     // Redirection page
       const location = useLocation();
