@@ -12,7 +12,7 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
   const handleBooking = (e) => {
     e.preventDefault();
     const slot = e.target.slot.value;
-    console.log(slot);
+    // console.log(slot);
     // Booking info adding to backend mongodb
     const booking = {
       treatmentId: _id,
@@ -32,7 +32,7 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if(data.success){
           toast(`Appointment is set to ${formattedDate} at ${slot}`)
         }
