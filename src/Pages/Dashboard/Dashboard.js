@@ -7,7 +7,7 @@ import useAdmin from "../../hooks/useAdmin";
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   // calling useAdmin hooke for restricted admin panel
-  const {admin} = useAdmin(user);
+  const [admin]  = useAdmin(user);
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
