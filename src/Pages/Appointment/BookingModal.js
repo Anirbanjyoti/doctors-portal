@@ -23,7 +23,7 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
       patientName: user.displayName,
       phone: e.target.phone.value,
     };
-    fetch("http://localhost:5000/booking", {
+    fetch("https://mysterious-retreat-91488.herokuapp.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
