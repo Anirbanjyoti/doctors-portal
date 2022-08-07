@@ -9,7 +9,7 @@ const AddDoctor = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
   // Load mongodb api data by useQuery
   const { data: services, isLoading } = useQuery(["services"], () =>
@@ -19,61 +19,57 @@ const AddDoctor = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
- 
-  const imageStorageKey='f3a6088d5c548faa1303685172a82865';
+
+  const imageStorageKey = "f3a6088d5c548faa1303685172a82865";
   // Onsubmit
   /**
    * 3 ways to store images
-   * 1. Third party storage //Free open public storage is ok for Practice project 
+   * 1. Third party storage //Free open public storage is ok for Practice project
    * 2. Your own storage in your own server (file system)
-   * 3. Database: Mongodb 
-   * 
+   * 3. Database: Mongodb
+   *
    * YUP: to validate file: Search: Yup file validation for react hook form
-  */
-   const onSubmit = async data => {
+   */
+  const onSubmit = async (data) => {
     const image = data.image[0];
     const formData = new FormData();
-    formData.append('image', image);
+    formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
     fetch(url, {
-        method: 'POST',
-        body: formData
+      method: "POST",
+      body: formData,
     })
-    .then(res=>res.json())
-    .then(result =>{
-        if(result.success){
-            const img = result.data.url;
-            const doctor = {
-                name: data.name,
-                email: data.email,
-                specialty: data.specialty,
-                img: img
-            }
-            // send to your database 
-            fetch('http://localhost:5000/doctor', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                },
-                body: JSON.stringify(doctor)
-            })
-            .then(res =>res.json())
-            .then(inserted =>{
-                if(inserted.insertedId){
-                    toast.success('Doctor added successfully')
-                    reset();
-                }
-                else{
-                    toast.error('Failed to add the doctor');
-                }
-            })
-
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const doctor = {
+            name: data.name,
+            email: data.email,
+            specialty: data.specialty,
+            img: img,
+          };
+          // send to your database
+          fetch("http://localhost:5000/doctor", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(doctor),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                toast.success("Doctor added successfully");
+                reset();
+              } else {
+                toast.error("Failed to add the doctor");
+              }
+            });
         }
-        
-    })
-}
-
+      });
+  };
 
   return (
     <div className="w-1/2 mx-auto">
@@ -143,7 +139,7 @@ const AddDoctor = () => {
           <label className="label">
             <span className="label-text">Specialty</span>
           </label>
-          
+
           <select
             {...register("specialty")}
             className="select select-bordered w-full max-w-xs"
@@ -152,7 +148,6 @@ const AddDoctor = () => {
               <option key={service._id} value={service.name}>
                 {service.name}
               </option>
-              
             ))}
           </select>
         </div>
