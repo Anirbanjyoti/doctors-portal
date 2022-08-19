@@ -18,6 +18,7 @@ import RequireAdmin from "./Pages/Login/RequireAdmin";
 import AddDoctor from "./Pages/Dashboard/AddDoctor";
 import ManageDoctors from "./Pages/Dashboard/ManageDoctors";
 import Payment from "./Pages/Dashboard/Payment";
+import Footer from '../src/Pages/Shared/Footer'
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
         <Route path="signup" element={<SignUp />} />
       </Routes>
       <ToastContainer />
+      <Footer></Footer>
     </div>
   );
 }

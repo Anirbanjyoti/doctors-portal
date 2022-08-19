@@ -13,7 +13,7 @@ const AddDoctor = () => {
   } = useForm();
   // Load mongodb api data by useQuery
   const { data: services, isLoading } = useQuery(["services"], () =>
-    fetch("http://localhost:5000/service").then((res) => res.json())
+    fetch("https://mysterious-retreat-91488.herokuapp.com/service").then((res) => res.json())
   );
 
   if (isLoading) {
@@ -50,7 +50,7 @@ const AddDoctor = () => {
             img: img,
           };
           // send to your database
-          fetch("http://localhost:5000/doctor", {
+          fetch("https://mysterious-retreat-91488.herokuapp.com/doctor", {
             method: "POST",
             headers: {
               "content-type": "application/json",

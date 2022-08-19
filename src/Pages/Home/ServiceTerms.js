@@ -1,8 +1,13 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import treatment from "../../assets/images/treatment.png";
-import Button from "../Shared/Button";
 
 const ServiceTerms = () => {
+  const navigate = useNavigate();
+  const handleAppointment=e=>{
+    e.preventDefault();
+    navigate('/appointment')
+  }
   return (
     <section>
       <div className="hero min-h-screen my-24">
@@ -17,14 +22,9 @@ const ServiceTerms = () => {
               Exceptional Dental Care, on Your Terms
             </h1>
             <p className="py-6">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsumis that it has a more-or-less normal
-              distribution of letters,as opposed to using 'Content here, content
-              here', making it look like readable English. Many desktop
-              publishing packages and web page
+            Why is this important? For the simple reason that relationship you have with your chosen dental practitioner will colour your confidence in and encourage a positive attitude towards your dental health. So, the question that then needs to be answered is how does one choose a dentist Sheffield to experience an extraordinary level of care and patient-service excellence? Read further to find out.
             </p>
-            <Button>Get Started</Button>
+            <a href={Link} className='btn bg-primary text-accent' onClick={handleAppointment}>Get started</a>
           </div>
         </div>
       </div>

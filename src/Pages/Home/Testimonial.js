@@ -11,29 +11,29 @@ const Testimonial = () => {
       _id: 1,
       name: "Winson Herry",
       review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
+        "He services that I receive from DP is excellent. Dr. Herry and the staff are friendly and ensure that I am properly informed about my health and care. I would have no qualms in recommending them to friendly and friends.",
       location: "California",
       img: people1,
     },
     {
       _id: 2,
-      name: "Winson Herry",
+      name: "Merry Dawson",
       review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      location: "California",
+        "Dr. Merry did a great job with my first ever health exam. She explained everything to me in a very clear manner. She was also kind and friendly. All of the staff was great – they were helpful, patient and helped with my insurance.",
+      location: "NewYork",
       img: people2,
     },
     {
       _id: 3,
-      name: "Winson Herry",
+      name: "Wins perry",
       review:
-        "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-      location: "California",
+        " Dr. perry is incredible. Not only has she taken great care of my health, but also she is lovely to speak with at every appointment. I highly recommend becoming her patient!",
+      location: "Las Vegas",
       img: people3,
     },
   ];
   return (
-    <div className="my-28">
+    <div className="my-28 px-24">
       <div className="flex justify-between">
         <div>
           <h1 className="text-primary">Testimonial</h1>

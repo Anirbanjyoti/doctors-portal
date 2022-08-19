@@ -1,8 +1,13 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import chair from '../../assets/images/chair.png'
-import Button from '../Shared/Button';
 
 const HomeHero = () => {
+  const navigate = useNavigate();
+  const handleAppointment=e=>{
+    e.preventDefault();
+    navigate('/appointment')
+  }
     return (
       <section>
         <div className="hero min-h-screen">
@@ -13,11 +18,11 @@ const HomeHero = () => {
           alt="images"
         />
         <div>
-          <h1 className="text-5xl font-bold">Your New Smile Starts Here!</h1>
-          <p className="py-6">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad animi necessitatibus enim perspiciatis maiores facere minus perferendis nulla consequatur error!
+          <h1 className="text-5xl font-bold">Efficient Doctor Patient Portal!</h1>
+          <p className="py-6 pr-10">
+          We here propose a doctor patient handling, managing system that helps doctors in their work and also patients to book doctor appointments and view medical progress. The system allows doctors to manage their booking slots online. Patients are allowed to book empty slots online and those slots are reserved in their name. 
           </p>
-          <Button>Get started</Button>
+          <a href={Link} className='btn bg-primary text-accent' onClick={handleAppointment}>Get started</a>
         </div>
       </div>
     </div>

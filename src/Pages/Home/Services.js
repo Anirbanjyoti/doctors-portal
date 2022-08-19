@@ -10,36 +10,36 @@ const Services = () => {
       _id: 1,
       name: "Fluoride Treatment",
       description:
-        "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the",
+        "Fluoride is a natural mineral that builds strong teeth and prevents cavities.",
       img: fluoride,
     },
     {
       _id: 2,
       name: "Cavity Filling",
       description:
-        "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the",
+        "Dental fillings are a common way to treat cavities, which are areas of decaying tooth.",
       img: Cavity,
     },
     {
       _id: 3,
       name: "Teeth Whitening",
       description:
-        "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the",
+        "Teeth whitening is one of the most popular cosmetic dentistry treatments.",
       img: Whitening,
     },
   ];
   return (
-    <section>
+    <div>
       <div className="text-center my-28 uppercase">
         <h3 className="text-primary font-bold text-xl">Our Services</h3>
         <p className="text-4xl">Services We Provide</p>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-28">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-18 px-24">
         {services.map((service) => (
           <Service key={service._id} service={service}></Service>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

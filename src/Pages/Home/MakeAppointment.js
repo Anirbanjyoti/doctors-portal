@@ -1,9 +1,14 @@
 import React from "react";
 import doctor from "../../assets/images/doctor-small.png";
 import bgBlue from "../../assets/images/appointment.png";
-import Button from "../Shared/Button";
+import { Link, useNavigate } from "react-router-dom";
 
 const MakeAppointment = () => {
+  const navigate = useNavigate();
+  const handleAppointment=e=>{
+    e.preventDefault();
+    navigate('/appointment')
+  }
   return (
     <section
       className="sm:my-28"
@@ -19,18 +24,13 @@ const MakeAppointment = () => {
 
         <div className="flex-1 px-5 sm:py-14">
           <h3 className="text-xl text-primary">Appointment</h3>
-          <h1 className="text-5xl font-bold text-white">
+          <h1 className="text-5xl mb-2 font-bold text-white">
             Make an appointment Today
           </h1>
           <p className="text-white">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsumis that it has a more-or-less normal
-            distribution of letters,as opposed to using 'Content here, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page
+            If you are going to make an appointment, you are either going to make an appointment for future use, or if you are rushing, you will JUST make the appointment if you hurry.
           </p>
-          <Button>Get Started</Button>
+          <a href={Link} className='btn bg-primary text-accent mt-4' onClick={handleAppointment}>Get started</a>
         </div>
       </div>
     </section>
